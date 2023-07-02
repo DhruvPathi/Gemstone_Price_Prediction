@@ -94,3 +94,10 @@ class DataTransformation:
 
         except Exception as e:
             raise CustomException(e, sys)
+
+
+if __name__=="__main__":
+    dataTransObj = DataTransformation()
+    train_arr, test_arr,preprocessor_path=dataTransObj.initiate_data_transformation("artifacts/train.csv", "artifacts/test.csv")
+    modelTrainerObj = ModelTrainer()
+    print(modelTrainerObj.initiate_model_trainer(train_arr, test_arr,preprocessor_path))
