@@ -2,6 +2,7 @@ import os
 import sys
 from src.logger import logging
 from src.exception import CustomException
+from src.components.model_trainer import ModelTrainer
 from src.utils import save_obj
 import pandas as pd
 import numpy as np
