@@ -6,6 +6,7 @@ import pandas as pd
 import dill
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 from sklearn.model_selection import GridSearchCV
+from pydantic import BaseModel
 
 from src.exception import CustomException
 from src.logger import logging
@@ -52,3 +53,14 @@ def evaluate_models(X_train, y_train, X_test, y_test, models, params):
         return report
     except Exception as e:
         raise CustomException(e, sys)
+
+class InputData(BaseModel):
+    carat: float
+    cut: str
+    color: str
+    clarity: str
+    depth: float
+    table: float
+    x: float
+    y: float
+    z: float
