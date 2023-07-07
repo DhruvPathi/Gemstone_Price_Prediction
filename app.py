@@ -35,7 +35,11 @@ def predict_gemstone_price(data:InputData):
     y = data['y']
     z = data['z']
 
-    result = predict_price(model,preprocessor,[carat,cut,color,clarity,depth,table,x,y,z])
+    result = round(
+        predict_price(
+            model,preprocessor,
+            [carat,cut,color,clarity,depth,table,x,y,z]), 
+        2)
 
     return{
         "Price": result
@@ -44,3 +48,19 @@ def predict_gemstone_price(data:InputData):
 if __name__=="__main__":
     #uvicorn.run(app, host='127.0.0.1', port=8000)
     uvicorn.run(app, host='0.0.0.0', port=8000)
+
+# uvicorn app:app --reload
+
+'''
+{
+  "carat": 1.52,
+  "cut": "Premium",
+  "color": "D",
+  "clarity": "VS2",
+  "depth": 61.1,
+  "table": 59.0,
+  "x": 7.4,
+  "y": 7.36,
+  "z": 4.52
+}
+'''
